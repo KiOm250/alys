@@ -63,7 +63,7 @@ Bot.on('message', message => {
 
 Bot.on('message', message => {
     if (message.content === 'About Alys') {
-        message.channel.send('**Alys, à propos** \n \n **Version : 2.1.0** \n Rajouts: Commande `About Alys` \n Date de version: 29 Août 2018 \n \n **Liste de serveurs** \n' + Bot.guilds.map(guild => guild.name + '; avec ' + guild.memberCount + ' membres \n') + '\n \n **Lien d\'invitation** \n https://kiom.neocities.org/alys.html \n \n **Alys Bot by ஜ۩KiOm۩ஜ#0503**')
+        message.channel.send('**Alys, à propos** \n \n **Version : 2.1.1** \n Rajouts: Réactions `LE FUN / send help` \n Date de version: 01 Septembre 2018 \n \n **Liste de serveurs** \n' + Bot.guilds.map(guild => guild.name + ' avec ' + guild.memberCount + ' membres !') + '\n \n **Lien d\'invitation** \n https://kiom.neocities.org/alys.html \n \n **Alys Bot by ஜ۩KiOm۩ஜ#0503**')
 }});
 
 Bot.on('message', message => {
@@ -199,7 +199,7 @@ Bot.on('message', message => {
 });
         
 Bot.on('message', message => {
-    if(message.content.startsWith('LE FUN')) {
+    if(message.content.startsWith('send help')) {
         //message.renply('**KWA MIGO EST MORT ?** Ah non fausse joie *triste*');
         message.channel.send(({
             file : "send help.png"
