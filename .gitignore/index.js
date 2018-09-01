@@ -7,7 +7,7 @@ var Overraid = ""
 
 Bot.on('ready', function() {
     console.log("Je suis prête ^^");
-    Bot.user.setActivity('Help Alys pour les commandes', { type: 'PLAYING' })
+    Bot.user.setActivity('Help Alys // Version 2.1.1', { type: 'PLAYING' })
 });
 
 Bot.on('message', message => {
@@ -189,6 +189,24 @@ Bot.on('message', message => {
     }
 });
 
+Bot.on('message', message => {
+    if(message.content.startsWith('LE FUN')) {
+        //message.renply('**KWA MIGO EST MORT ?** Ah non fausse joie *triste*');
+        message.channel.send(({
+            file : "KiOmSEclate.gif"
+         });
+    }
+});
+        
+Bot.on('message', message => {
+    if(message.content.startsWith('LE FUN')) {
+        //message.renply('**KWA MIGO EST MORT ?** Ah non fausse joie *triste*');
+        message.channel.send(({
+            file : "send help.png"
+         });
+    }
+});
+
 var oui = [
     "0 ! Paulok ! ***C A N C E R***",
     "1 ! Maria ! Raté !",
@@ -200,7 +218,7 @@ var oui = [
     "7 ! Moi même ! Rooh ! On est pas parfait !",
     "8 ! J'ai personne en 8 mdr",
     "9 ! Nekomy ! La reine !",
-    "10 !!! K1BO ! Es-ce que j\'ai vraiment besoin d\'argumenter ?"
+    "10 !!! Suky ! Es-ce que j\'ai vraiment besoin d\'argumenter ?"
   ]
   Bot.on("message", (message) => {
       if (message.content.startsWith("!StarLevel")) {
@@ -346,7 +364,7 @@ Bot.on('message', message => {
         if (message.content.startsWith('Reset Game')) {
             message.delete(1);
             var str = message.content
-            Bot.user.setActivity('Help Alys pour les commandes', { type: 'PLAYING' })
+            Bot.user.setActivity('Help Alys // Version 2.1.1', { type: 'PLAYING' })
         }
     }
 });
