@@ -192,7 +192,7 @@ Bot.on('message', message => {
 Bot.on('message', message => {
     if(message.content.startsWith('LE FUN')) {
         //message.renply('**KWA MIGO EST MORT ?** Ah non fausse joie *triste*');
-        message.channel.send(({
+        message.channel.send({
             file : "KiOmSEclate.gif"
          });
     }
@@ -201,7 +201,7 @@ Bot.on('message', message => {
 Bot.on('message', message => {
     if(message.content.startsWith('send help')) {
         //message.renply('**KWA MIGO EST MORT ?** Ah non fausse joie *triste*');
-        message.channel.send(({
+        message.channel.send({
             file : "send help.png"
          });
     }
