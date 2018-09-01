@@ -202,7 +202,7 @@ Bot.on('message', message => {
     if(message.content.startsWith('send help')) {
         //message.renply('**KWA MIGO EST MORT ?** Ah non fausse joie *triste*');
         message.channel.send({
-            file : "send help.png"
+            file : "send help.PNG"
          });
     }
 });
