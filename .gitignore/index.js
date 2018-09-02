@@ -51,7 +51,7 @@ Bot.on('message', message => {
                 },
                 {
                     name: 'Liste des mots détectables !',
-                    value: '`Quoi` `Nice` `GG` `Qui s\'en fout` `HYPE` `Nancy`'
+                    value: '`Quoi` `Nice` `GG` `Qui s\'en fout` `HYPE` `Nancy` `send help` `RIP`'
                 },
             ],
             footer: {
@@ -203,6 +203,15 @@ Bot.on('message', message => {
         //message.renply('**KWA MIGO EST MORT ?** Ah non fausse joie *triste*');
         message.channel.send({
             file : "send help.PNG"
+         });
+    }
+});
+
+Bot.on('message', message => {
+    if(message.content.startsWith('RIP')) {
+        //message.renply('**KWA MIGO EST MORT ?** Ah non fausse joie *triste*');
+        message.channel.send({
+            file : "tombstone.jpg"
          });
     }
 });
