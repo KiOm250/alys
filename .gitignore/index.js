@@ -63,7 +63,7 @@ Bot.on('message', message => {
 
 Bot.on('message', message => {
     if (message.content === 'About Alys') {
-        message.channel.send('**Alys, à propos** \n \n **Version : 2.1.2** \n Rajouts: MAJ `OCEAN CRY` // Suppression `@everyone` \n Date de version: 09 Septembre 2018 \n \n **Liste de serveurs** \n' + Bot.guilds.map(guild => guild.name + ' avec ' + guild.memberCount + ' membres !') + '\n \n **Lien d\'invitation** \n https://kiom.neocities.org/alys.html \n \n **Alys Bot by ஜ۩KiOm۩ஜ#0503**')
+        message.channel.send('**Alys, à propos** \n \n **Version : 2.1.2** \n Rajouts: Commande Administrateur // MAJ `OCEAN CRY` // Suppression `@everyone` \n Date de version: 09 Septembre 2018 \n \n **Liste de serveurs** \n' + Bot.guilds.map(guild => guild.name + ' avec ' + guild.memberCount + ' membres !') + '\n \n **Lien d\'invitation** \n https://kiom.neocities.org/alys.html \n \n **Alys Bot by ஜ۩KiOm۩ஜ#0503**')
 }});
 
 Bot.on('message', message => {
