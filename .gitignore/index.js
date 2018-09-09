@@ -7,14 +7,14 @@ var Overraid = ""
 
 Bot.on('ready', function() {
     console.log("Je suis prête ^^");
-    Bot.user.setActivity('Help Alys // Version 2.1.1', { type: 'PLAYING' })
+    Bot.user.setActivity('Help Alys // Version 2.1.2', { type: 'PLAYING' })
 });
 
 Bot.on('message', message => {
     if (message.content === 'Help Alys') {
         message.channel.send({embed:  {
             color: 3447003,
-            title: '**Commandes**',
+            title: 'Commandes',
             description: 'Voici la liste **non complète** des commandes et textes réactions (à vous de trouver les autres huhuhu)',
             fields: [
                 {
@@ -56,14 +56,14 @@ Bot.on('message', message => {
             ],
             footer: {
                 icon_url: Bot.user.avatarURL,
-                text: 'Alys Bot by ஜ۩KiOm۩ஜ#0503',
+                text: 'Alys Bot by kion#0503',
             },
     }})
 }});
 
 Bot.on('message', message => {
     if (message.content === 'About Alys') {
-        message.channel.send('**Alys, à propos** \n \n **Version : 2.1.1** \n Rajouts: Réactions `LE FUN / send help` \n Date de version: 01 Septembre 2018 \n \n **Liste de serveurs** \n' + Bot.guilds.map(guild => guild.name + ' avec ' + guild.memberCount + ' membres !') + '\n \n **Lien d\'invitation** \n https://kiom.neocities.org/alys.html \n \n **Alys Bot by ஜ۩KiOm۩ஜ#0503**')
+        message.channel.send('**Alys, à propos** \n \n **Version : 2.1.2** \n Rajouts: MAJ `OCEAN CRY` // Suppression `@everyone` \n Date de version: 09 Septembre 2018 \n \n **Liste de serveurs** \n' + Bot.guilds.map(guild => guild.name + ' avec ' + guild.memberCount + ' membres !') + '\n \n **Lien d\'invitation** \n https://kiom.neocities.org/alys.html \n \n **Alys Bot by ஜ۩KiOm۩ஜ#0503**')
 }});
 
 Bot.on('message', message => {
@@ -74,17 +74,10 @@ Bot.on('message', message => {
 });
 
 Bot.on('message', message => {
-    if(message.content.startsWith('@everyone')) {
-        //message.renply('***PING BORDEL T'EST AUSSI CANCER QUE MIGO (FAUT LE FAIRE QUAND MÊME)***');
-        message.channel.send('***P I N G***');
-    }
-});
-
-Bot.on('message', message => {
     if(message.content.startsWith('OCEAN CRY')) {
-        let SpliteMessage = message.content.split(' ')
-        if(SpliteMessage.length === 3) {
-            message.channel.sendMessage(message.mentions.users.first() + " meurs noyé ! " + 'https://media1.tenor.com/images/2cb87ee9662473bae186436072f91ce6/tenor.gif?itemid=5543161' )
+        let member = message.mentions.members.first()
+        if (message.content.startsWith("Kamehameha " + member)) {
+            message.channel.sendMessage(member + " meurs noyé ! " + 'https://media1.tenor.com/images/2cb87ee9662473bae186436072f91ce6/tenor.gif?itemid=5543161' )
         }
         else
             message.channel.sendMessage("Ouh j'ai pas localisé la cible. As-tu mentionné ?")
@@ -341,7 +334,7 @@ Bot.on('message', message => {
 Bot.on('message', message => {
     if (message.author.id == 352769640218361867) {
         if (message.content.startsWith('Alys, matrice !')) {
-            message.delete(1);
+            message.delete(100);
             var str = message.content
             message.channel.sendMessage(str.substring(15))
         }
