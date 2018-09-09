@@ -7,7 +7,7 @@ var Overraid = ""
 
 Bot.on('ready', function() {
     console.log("Je suis prête ^^");
-    Bot.user.setActivity('Help Alys // Version 2.1.2', { type: 'PLAYING' })
+    Bot.user.setActivity('Help Alys // Version 2.2', { type: 'PLAYING' })
 });
 
 Bot.on('message', message => {
@@ -20,6 +20,10 @@ Bot.on('message', message => {
                 {
                     name: '**Help Alys**',
                     value: 'Bah à ton avis on est où là ?'
+                },
+                {
+                    name: '**Alys, photo !**',
+                    value: 'Un petit souvenir ? P.S. Je suis pas très douée avec mon appareil ^^\''
                 },
                 {
                     name: '**!StarLevel**',
@@ -47,7 +51,11 @@ Bot.on('message', message => {
                 },
                 {
                     name: '**Roulette Russe**',
-                    value: '5 Triforce, 1 Despacito. Attention !'
+                    value: '3 Triforce, 1 Despacito. Attention !'
+                },
+                {
+                    name: '**About Server**',
+                    value: '2-3 infos sur votre serveur, C\'est super pratique !'
                 },
                 {
                     name: 'Liste des mots détectables !',
@@ -56,15 +64,26 @@ Bot.on('message', message => {
             ],
             footer: {
                 icon_url: Bot.user.avatarURL,
-                text: 'Alys Bot by kion#0503',
+                text: 'Alys Bot by kion#0503 // Note de mise à jour avec "About Alys"',
             },
     }})
 }});
 
 Bot.on('message', message => {
     if (message.content === 'About Alys') {
-        message.channel.send('**Alys, à propos** \n \n **Version : 2.1.2** \n Rajouts: Commande Administrateur // MAJ `OCEAN CRY` // Suppression `@everyone` \n Date de version: 09 Septembre 2018 \n \n **Liste de serveurs** \n' + Bot.guilds.map(guild => guild.name + ' avec ' + guild.memberCount + ' membres !') + '\n \n **Lien d\'invitation** \n https://kiom.neocities.org/alys.html \n \n **Alys Bot by ஜ۩KiOm۩ஜ#0503**')
+        message.channel.send('**Alys, à propos** \n \n **Version : 2.2** \n Rajouts: Commande Administrateur // Nouveau `About Server / Alys, photo !` // MAJ `OCEAN CRY` // Suppression `@everyone` \n Date de version: 09 Septembre 2018 \n \n **Liste de serveurs** \n' + Bot.guilds.map(guild => guild.name + ' avec ' + guild.memberCount + ' membres !') + '\n \n **Lien d\'invitation** \n https://kiom.neocities.org/alys.html \n \n **Alys Bot by ஜ۩KiOm۩ஜ#0503**')
 }});
+
+Bot.on('message', message => {
+    if (message.content.startsWith('About Server')) {
+        message.channel.send(message.guild.name + ", Infos utiles \n \n **Propriétaire : " + message.guild.owner.user.username  + "** \n \n " + message.guild.memberCount + " membres sue le serveur à ce jour. \n \n Rôles : \n`" + message.guild.roles.map(rôle =>"\n " + rôle.name + " ") + "`")
+}});
+
+Bot.on('message', message => {
+  if (message.content === 'Alys, photo !') {
+    message.reply(message.author.avatarURL);
+  }
+});
 
 Bot.on('message', message => {
     if(message.content === 'tg') {
