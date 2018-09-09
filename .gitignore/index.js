@@ -76,7 +76,7 @@ Bot.on('message', message => {
 Bot.on('message', message => {
     if(message.content.startsWith('OCEAN CRY')) {
         let member = message.mentions.members.first()
-        if (message.content.startsWith("Kamehameha " + member)) {
+        if (message.content.startsWith("OCEAN CRY " + member)) {
             message.channel.sendMessage(member + " meurs noyé ! " + 'https://media1.tenor.com/images/2cb87ee9662473bae186436072f91ce6/tenor.gif?itemid=5543161' )
         }
         else
