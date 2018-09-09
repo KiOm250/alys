@@ -398,11 +398,12 @@ Bot.on('message', message => {
             });
           } else {
             message.reply('Race inconnue');
+          }
           } else {
             message.reply('Y\'a aucune race là.');
       }
     }
   }      
-}});
+});
 
 Bot.login(process.env.TOKEN) // Token Sécurisé tavu
