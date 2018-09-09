@@ -381,4 +381,28 @@ Bot.on('message', message => {
     }
 });
 
+Bot.on('message', message => {
+  if (!message.guild) return;
+    if (message.author.id == 352769640218361867) {
+      if (message.content.startsWith('Race')) {
+        const user = message.mentions.users.first();
+        if (user) {
+          const member = message.guild.member(user);
+          if (member) {
+            member.ban({
+              reason: 'Race.',
+            }).then(() => {
+              message.reply(`${user.tag} s'est bien fait niquer sa race !`);
+            }).catch(err => {
+              message.reply('OH NON ! SA RACE EST SUPERIEURE ! SACRILEGE');
+            });
+          } else {
+            message.reply('Race inconnue');
+          } else {
+            message.reply('Y\'a aucune race là.');
+      }
+    }
+  }      
+});
+
 Bot.login(process.env.TOKEN) // Token Sécurisé tavu
