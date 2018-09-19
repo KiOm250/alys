@@ -92,6 +92,80 @@ Bot.on('message', message => {
     }});
 }});
 
+Bot.on('message', message =>{
+  if (!message.guild) return;
+  if (message.content.startsWith('MusicJoin')) {
+    const channel = message.guild.channels.get(message.content.split(' ')[1]) || message.member.voiceChannel;
+    if (channel && channel.type === 'voice') {
+      channel.join().then(conn => {
+        conn.player.on('error', (...e) => console.log('player', ...e));
+        if (!connections.has(message.guild.id)) connections.set(message.guild.id, { conn, queue: [] });
+        message.reply('Je suis connectée ^^');
+      });
+    } else {
+      message.reply('T\'est sur un vocal au moins ?');
+    }
+  }
+  else if (message.content.startsWith('MusicPlay')) {
+    if (connections.has(message.guild.id)) {
+      const connData = connections.get(message.guild.id);
+      const queue = connData.queue;
+      const url = message.content.split(' ').slice(1).join(' ')
+        .replace(/</g, '')
+        .replace(/>/g, '');
+      queue.push({ url, message });
+      if (queue.length > 1) {
+        message.reply(`Conservé dans la matrice pour être lançé dans ${queue.length - 1} musiques !`);
+        return;
+      }
+      doQueue(connData);
+    }
+  }
+ 
+  else if (message.content.startsWith('MusicSkip')) {
+    if (connections.has(message.guild.id)) {
+      const connData = connections.get(message.guild.id);
+      if (connData.dispatcher) {
+        connData.dispatcher.end();
+      }
+    }
+  } else if (message.content.startsWith('MusicLeave')) {
+      const channel = message.guild.channels.get(message.content.split(' ')[1]) || message.member.voiceChannel;
+      if (channel && channel.type === 'voice') {
+        channel.join()
+        message.channel.send('Et voilà ! Interlude musicale finie ^^');
+        return undefined;
+      }
+    }
+  } else if (message.content.startsWith('#eval') && message.author.id === 'Votre id') {
+    try {
+      const com = eval(message.content.split(' ').slice(1).join(' '));
+      message.channel.sendMessage(`\`\`\`\n${com}\`\`\``);
+    } catch (e) {
+      console.log(e);
+      message.channel.sendMessage(`\`\`\`\n${e}\`\`\``);
+    }
+  }
+});
+function doQueue(connData) {
+  const conn = connData.conn;
+  const queue = connData.queue;
+  const item = queue[0];
+  if (!item) return;
+  const stream = ytdl(item.url, { filter: 'audioonly' }, { passes: 3 });
+  const dispatcher = conn.playStream(stream);
+  stream.on('info', info => {
+    item.message.reply(`Je lançe **${info.title}** ! ^^`);
+  });
+  dispatcher.on('end', () => {
+    queue.shift();
+    doQueue(connData);
+  });
+  dispatcher.on('error', (...e) => console.log('dispatcher', ...e));
+  connData.dispatcher = dispatcher;
+}
+});
+
 Bot.on('message', message => {
     if(message.content === 'Les lapins.') {
         //message.renply(':clap:');
