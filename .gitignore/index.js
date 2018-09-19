@@ -3,7 +3,7 @@ const Bot = new Discord.Client();
 const ytdl = require('ytdl-core');
 const YoutubeDL = require('youtube-dl');
 
-const PREFIX = "!";
+const PREFIX = "Music";
 
 const connections = new Map();
 let broadcast;
@@ -118,7 +118,6 @@ Bot.on('message', message => {
 }});
 
 module.exports = function (client, options) {
-	let PREFIX = (options && options.prefix) || 'Music';
 	let GLOBAL = (options && options.global) || false;
 	let MAX_QUEUE_SIZE = (options && options.maxQueueSize) || 20;
 	let DEFAULT_VOLUME = (options && options.volume) || 50;
