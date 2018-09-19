@@ -2,15 +2,7 @@ const Discord = require('discord.js');
 const Bot = new Discord.Client();
 const ytdl = require('ytdl-core');
 
-const PREFIX = "!";
-
-const connections = new Map();
-let broadcast;
-
-var Overraid = ""
-
 Bot.on('ready', function() {
-    console.log("Je suis prête ^^");
     Bot.user.setActivity('Help Alys // Version 3.0', { type: 'PLAYING' })
 });
 
@@ -74,7 +66,7 @@ Bot.on('message', message => {
                 icon_url: Bot.user.avatarURL,
                 text: 'Alys Bot by kion#0503 // Note de mise à jour avec "About Alys"',
             },
-    }})
+    }});
 }});
 
 Bot.on('message', message => {
@@ -85,20 +77,8 @@ Bot.on('message', message => {
             description: 'Les Musiques c\'est la vie ! Donc je vous en fait écouter ^^ (c beau la vie kan mem)',
             fields: [
                 {
-                    name: '**MusicHelp**',
-                    value: 'Bah à ton avis on est où là ?'
-                },
-                {
-                    name: '**MusicJoin**',
-                    value: 'Si tu veux écouter ta musique c\'est mieux quand même'
-                },
-                {
                     name: '**MusicPlay**',
                     value: 'Pas besoin de te faire un dessin...'
-                },
-                {
-                    name: '**MusicSkip**',
-                    value: 'Pour ne plus supporter la playlist merdique de Kion'
                 },
                 {
                     name: '**MusicLeave**',
@@ -109,7 +89,7 @@ Bot.on('message', message => {
                 icon_url: Bot.user.avatarURL,
                 text: 'Alys Bot by kion#0503 // Note de mise à jour avec "About Alys"',
             },
-    }})
+    }});
 }});
 
 Bot.on('message', message => {
@@ -175,70 +155,60 @@ var prefer = [
 
 Bot.on('message', message => {
     if(message.content === '33') {
-        //message.renply('**KWA MIGO EST MORT ?** Ah non fausse joie *triste*');
         message.channel.send('806');
     }
 });
 
 Bot.on('message', message => {
     if(message.content === 'Sors.') {
-        //message.renply('**KWA MIGO EST MORT ?** Ah non fausse joie *triste*');
         message.channel.send(':door:');
     }
 });
 
 Bot.on('message', message => {
     if(message.content === 'T\'as l\'heure ?') {
-        //message.renply('**KWA MIGO EST MORT ?** Ah non fausse joie *triste*');
         message.channel.send('¯\\_(ツ)_/¯');
     }
 });
 
 Bot.on('message', message => {
     if(message.content.startsWith('HYPE')) {
-        //message.renply('**KWA MIGO EST MORT ?** Ah non fausse joie *triste*');
         message.channel.send('https://www.youtube.com/watch?v=DcfVqJV8-YM');
     }
 });
 
 Bot.on('message', message => {
     if(message.content === 'Despacito') {
-        //message.renply('**KWA MIGO EST MORT ?** Ah non fausse joie *triste*');
         message.channel.send('die');
     }
 });
 
 Bot.on('message', message => {
     if(message.content === 'Despacito 2') {
-        //message.renply('**KWA MIGO EST MORT ?** Ah non fausse joie *triste*');
         message.channel.send('https://www.youtube.com/watch?v=W3GrSMYbkBE');
     }
 });
 
 Bot.on('message', message => {
     if(message.content.startsWith('Qui s\'en fout ')) {
-        //message.renply('**KWA MIGO EST MORT ?** Ah non fausse joie *triste*');
         message.channel.send(':raised_hand:');
     }
 });
 
 Bot.on('message', message => {
     if(message.content.startsWith('Nice')) {
-        //message.renply('**KWA MIGO EST MORT ?** Ah non fausse joie *triste*');
         message.channel.send('*tousse* Nice — prononcé [nis] (Nissa ou Niça en nissart, Nizza ou Nizza Marittima en italien) — est une commune du Sud-Est de la France, préfecture du département des Alpes-Maritimes et deuxième ville de la région Provence-Alpes-Côte d\'Azur derrière Marseille. Située à l\'extrémité sud-est de la France, à une trentaine de kilomètres de la frontière franco-italienne, elle est établie sur les bords de la mer Méditerranée, le long de la baie des Anges et à l\'embouchure du Paillon. Avec 342 522 habitants au dernier recensement de 2015, elle est la cinquième commune de France en population (après Paris, Marseille, Lyon et Toulouse). Elle est située au cœur de la septième aire urbaine de Fra... *Ok c\'est pas drôle*');
     }
 });
 
 Bot.on('message', message => {
     if(message.content.startsWith('Nancy')) {
-        //message.renply('**KWA MIGO EST MORT ?** Ah non fausse joie *triste*');
         message.channel.send('https://www.youtube.com/watch?v=exkQZM2VE6I');
     }
 });
 
 Bot.on('message', message => {
     if(message.content.startsWith('LE FUN')) {
-        //message.renply('**KWA MIGO EST MORT ?** Ah non fausse joie *triste*');
         message.channel.send({
             file : "KiOmSEclate.gif"
          });
@@ -247,7 +217,6 @@ Bot.on('message', message => {
         
 Bot.on('message', message => {
     if(message.content.startsWith('send help')) {
-        //message.renply('**KWA MIGO EST MORT ?** Ah non fausse joie *triste*');
         message.channel.send({
             file : "send help.PNG"
          });
@@ -256,7 +225,6 @@ Bot.on('message', message => {
 
 Bot.on('message', message => {
     if(message.content.startsWith('RIP')) {
-        //message.renply('**KWA MIGO EST MORT ?** Ah non fausse joie *triste*');
         message.channel.send({
             file : "tombstone.jpg"
          });
