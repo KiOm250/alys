@@ -26,6 +26,10 @@ Bot.on('message', message => {
                     value: 'Bah à ton avis on est où là ?'
                 },
                 {
+                    name: '**MusicHelp**',
+                    value: 'Le help pour le mode musical ^^'
+                },
+                {
                     name: '**Alys, photo !**',
                     value: 'Un petit souvenir ? P.S. Je suis pas très douée avec mon appareil ^^\''
                 },
@@ -64,6 +68,37 @@ Bot.on('message', message => {
                 {
                     name: 'Liste des mots détectables !',
                     value: '`Quoi` `Nice` `GG` `Qui s\'en fout` `HYPE` `Nancy` `send help` `RIP`'
+                },
+            ],
+            footer: {
+                icon_url: Bot.user.avatarURL,
+                text: 'Alys Bot by kion#0503 // Note de mise à jour avec "About Alys"',
+            },
+    }})
+}});
+
+Bot.on('message', message => {
+    if (message.content === 'MusicHelp') {
+        message.channel.send({embed:  {
+            color: 3447003,
+            title: 'Commandes',
+            description: 'Les Musiques c\'est la vie ! Donc je vous en fait écouter ^^ (c beau la vie kan mem)',
+            fields: [
+                {
+                    name: '**MusicHelp**',
+                    value: 'Bah à ton avis on est où là ?'
+                },
+                {
+                    name: '**MusicJoin**',
+                    value: 'Si tu veux écouter ta musique c\'est mieux quand même'
+                },
+                {
+                    name: '**MusicPlay**',
+                    value: 'Pas besoin de te faire un dessin...'
+                },
+                {
+                    name: '**MusicSkip**',
+                    value: 'Pour ne plus supporter la playlist merdique de Kion'
                 },
             ],
             footer: {
