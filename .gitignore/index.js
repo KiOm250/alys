@@ -100,6 +100,10 @@ Bot.on('message', message => {
                     name: '**MusicSkip**',
                     value: 'Pour ne plus supporter la playlist merdique de Kion'
                 },
+                {
+                    name: '**MusicLeave**',
+                    value: 'Ne me laissez pas seule'
+                },
             ],
             footer: {
                 icon_url: Bot.user.avatarURL,
