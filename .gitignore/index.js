@@ -1,8 +1,13 @@
 const Discord = require('discord.js');
 const Bot = new Discord.Client();
 const ytdl = require('ytdl-core');
-const YoutubeDL = require('youtube-dl');
-const music = require('./music.js');
+
+const PREFIX = "!";
+
+const connections = new Map();
+let broadcast;
+
+var Overraid = ""
 
 Bot.on('ready', function() {
     console.log("Je suis prête ^^");
@@ -79,29 +84,21 @@ Bot.on('message', message => {
             title: 'Commandes',
             description: 'Les Musiques c\'est la vie ! Donc je vous en fait écouter ^^ (c beau la vie kan mem)',
             fields: [
-		{
-                    name: '**Préambule**',
-                    value: 'Il se peut que la musique soit déteriorée, cela ne vient pas de moi mais des serveurs et de l\'activité externe du bot. La playlist du bot n\'accueille que 20 musiques pour éviter la surcharge.'
-                },
                 {
-                    name: '**Music Help**',
+                    name: '**MusicHelp**',
                     value: 'Bah à ton avis on est où là ?'
                 },
                 {
-                    name: '**Music Leave**',
-                    value: 'c fini'
+                    name: '**MusicJoin**',
+                    value: 'Si tu veux écouter ta musique c\'est mieux quand même'
                 },
                 {
-                    name: '**Music Play**',
+                    name: '**MusicPlay**',
                     value: 'Pas besoin de te faire un dessin...'
                 },
                 {
-                    name: '**Music Skip**',
+                    name: '**MusicSkip**',
                     value: 'Pour ne plus supporter la playlist merdique de Kion'
-                },
-                {
-                    name: '**Music List**',
-                    value: 'UNE LISTE'
                 },
             ],
             footer: {
@@ -111,7 +108,72 @@ Bot.on('message', message => {
     }})
 }});
 
-music(Bot);
+Bot.on('message', message =>{
+  if (!message.guild) return;
+  if (message.content.startsWith('MusicJoin')) {
+    const channel = message.guild.channels.get(message.content.split(' ')[1]) || message.member.voiceChannel;
+    if (channel && channel.type === 'voice') {
+      channel.join().then(conn => {
+        conn.player.on('error', (...e) => console.log('player', ...e));
+        if (!connections.has(message.guild.id)) connections.set(message.guild.id, { conn, queue: [] });
+        message.reply('Je suis connectée ^^');
+      });
+    } else {
+      message.reply('T\'est sur un vocal au moins ?');
+    }
+  }
+  else if (message.content.startsWith('MusicPlay')) {
+    if (connections.has(message.guild.id)) {
+      const connData = connections.get(message.guild.id);
+      const queue = connData.queue;
+      const url = message.content.split(' ').slice(1).join(' ')
+        .replace(/</g, '')
+        .replace(/>/g, '');
+      queue.push({ url, message });
+      if (queue.length > 1) {
+        message.reply(`Conservé dans la matrice pour être lançé dans ${queue.length - 1} musiques !`);
+        return;
+      }
+      doQueue(connData);
+    }
+  }
+  else if (message.content.startsWith('MusicSkip')) {
+    if (connections.has(message.guild.id)) {
+      const connData = connections.get(message.guild.id);
+      if (connData.dispatcher) {
+        connData.dispatcher.end();
+      }
+    }
+  } else if (message.content.startsWith('#eval') && message.author.id === 'Votre id') {
+    try {
+      const com = eval(message.content.split(' ').slice(1).join(' '));
+      message.channel.sendMessage(`\`\`\`\n${com}\`\`\``);
+    } catch (e) {
+      console.log(e);
+      message.channel.sendMessage(`\`\`\`\n${e}\`\`\``);
+    }
+  } else if (message.content.startsWith('MusicLeave') {
+    bot.voiceConnections.get(guildid).disconnect();
+    message.channel.sendMessage('Bye ! ^^');
+  }
+});
+function doQueue(connData) {
+  const conn = connData.conn;
+  const queue = connData.queue;
+  const item = queue[0];
+  if (!item) return;
+  const stream = ytdl(item.url, { filter: 'audioonly' }, { passes: 3 });
+  const dispatcher = conn.playStream(stream);
+  stream.on('info', info => {
+    item.message.reply(`Je lançe **${info.title}** ! ^^`);
+  });
+  dispatcher.on('end', () => {
+    queue.shift();
+    doQueue(connData);
+  });
+  dispatcher.on('error', (...e) => console.log('dispatcher', ...e));
+  connData.dispatcher = dispatcher;
+};
 
 Bot.on('message', message => {
     if (message.content === 'About Alys') {
