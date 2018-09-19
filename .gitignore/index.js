@@ -152,6 +152,11 @@ Bot.on('message', message =>{
       console.log(e);
       message.channel.sendMessage(`\`\`\`\n${e}\`\`\``);
     }
+  } else if (message.content.startsWith('MusicLeave')) {
+			const voiceConnection = client.voiceConnections.find(val => val.channel.guild.id == msg.guild.id);
+			if (voiceConnection === null) return msg.channel.send(wrap('Je peux pas partir si je ne suis pas arrivée :thinking:'));
+			voiceConnection.player.dispatcher.end();
+            voiceConnection.disconnect();
   }
 });
 function doQueue(connData) {
