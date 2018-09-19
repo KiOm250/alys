@@ -1,3 +1,6 @@
+const ytdl = require('ytdl-core');
+const YoutubeDL = require('youtube-dl');
+
 module.exports = function (client, options) {
 	let PREFIX = "Music";
 	let GLOBAL = (options && options.global) || false;
