@@ -93,45 +93,6 @@ Bot.on('message', message => {
 }});
 
 Bot.on('message', message => {
-    if (!message.content.startsWith('Music')) return undefined;
-    const args = message.content.split(' ');
-    
-    if (message.content.startsWith('MusicPlay')) {
-        const voiceChannel = message.member.voiceChannel;
-        if (!voiceChannel) return message.channel.send('Tu as pensé à être dans un vocal ?');
-        const perms = voiceChannel.permissionsFor('message.client.user');
-        if (!perms.has('CONNECT')) {
-			return message.channel.send('Alors... C\'est bête dis comme ça mais un bot musique est sensé pouvoir se co au vocal .__      __.');
-		}
-		if (!perms.has('SPEAK')) {
-			return message.channel.send('Aled mon micro marche pas faut me donner les perms');
-        }
-        
-        try {
-            var co = await voiceChannel.join();
-        } catch (error) {
-            console.error('Oups ${error}');
-            return message.channel.send('Oups ${error}');
-        }
-        
-        const dispatcher = co.playStream(ytdl(args[1]))
-            .on('end', () => {
-                message.channel.send('Playlist finie ^^');
-                voiceChannel.leave();
-            })
-            .on('error', () => {
-                console.error(error);
-            });
-        dispatcher.setVolumeLogarithmic(5 / 5);
-    } else if (message.content.startsWith('MusicLeave')) {
-	    if (!message.member.voiceChannel) return message.channel.send('Je suis pas dans un vocal, donc je peux pas leave **BAKA**');
-	    message.member.voiceChannel.leave();
-        message.channel.send('Et voilà ! Interlude musicale finie ^^');
-        return undefined;
-    }
-});
-
-Bot.on('message', message => {
     if(message.content === 'Les lapins.') {
         //message.renply(':clap:');
         message.renply('AH NON TU LA FERME ! PAS DE **H** ICI !');
