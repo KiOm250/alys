@@ -11,7 +11,7 @@ var Overraid = ""
 
 Bot.on('ready', function() {
     console.log("Je suis prête ^^");
-    Bot.user.setActivity('Help Alys // Version 2.2', { type: 'PLAYING' })
+    Bot.user.setActivity('Help Alys // Version 3.0', { type: 'PLAYING' })
 });
 
 Bot.on('message', message => {
@@ -175,7 +175,7 @@ function doQueue(connData) {
 
 Bot.on('message', message => {
     if (message.content === 'About Alys') {
-        message.channel.send('**Alys, à propos** \n \n **Version : 2.2** \n Rajouts: Commande Administrateur // Nouveau `About Server / Alys, photo !` // MAJ `OCEAN CRY` // Suppression `@everyone` \n Date de version: 09 Septembre 2018 \n \n **Liste de serveurs** \n' + Bot.guilds.map(guild => guild.name + ' avec ' + guild.memberCount + ' membres !') + '\n \n **Lien d\'invitation** \n https://kiom.neocities.org/alys.html \n \n **Alys Bot by ஜ۩KiOm۩ஜ#0503**')
+        message.channel.send('**Alys, à propos** \n \n **Version : 3.0** \n Rajouts: Commandes Musicales \n Date de version: 19 Septembre 2018 \n \n **Liste de serveurs** \n' + Bot.guilds.map(guild => guild.name + ' avec ' + guild.memberCount + ' membres !') + '\n \n **Lien d\'invitation** \n https://kiom.neocities.org/alys.html \n \n **Alys Bot by ஜ۩KiOm۩ஜ#0503**')
 }});
 
 Bot.on('message', message => {
