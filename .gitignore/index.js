@@ -156,7 +156,7 @@ Bot.on('message', message =>{
       console.log(e);
       message.channel.sendMessage(`\`\`\`\n${e}\`\`\``);
     }
-  } else if (message.content.startsWith('MusicLeave') {
+  } else if (message.content.startsWith('MusicLeave')) {
     bot.voiceConnections.get(guildid).disconnect();
     message.channel.sendMessage('Bye ! ^^');
   }
