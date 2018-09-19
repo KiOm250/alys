@@ -170,8 +170,7 @@ function doQueue(connData) {
   });
   dispatcher.on('error', (...e) => console.log('dispatcher', ...e));
   connData.dispatcher = dispatcher;
-}
-});
+};
 
 Bot.on('message', message => {
     if (message.content === 'About Alys') {
@@ -423,37 +422,6 @@ var Despacito = [
       }
 });
 
-
-Bot.on('message', message => {
-    if (message.author.id == 352769640218361867) {
-        if (message.content.startsWith('RPsayBOT')) {
-            var str = message.content
-            Bot.channels.get("470215594269212682").send(str.substring(9))
-        }
-    }
-});
-
-Bot.on('message', message => {
-    if (message.author.id == 352769640218361867) {
-        if (message.content.startsWith('Overraid')) {
-            message.delete(1);
-            var str = message.content
-            Bot.channels.get(Overraid).send(str.substring(8))
-        }
-    }
-});
-
-Bot.on('message', message => {
-    if (message.author.id == 352769640218361867) {
-        if (message.content.startsWith('Set Overraid')) {
-            message.delete(1);
-            var str = message.content
-            Overraid = str.substring(12)
-        }
-    }
-});
-
-
 Bot.on('message', message => {
     if (message.author.id == 352769640218361867) {
         if (message.content.startsWith('Alys, matrice !')) {
@@ -489,7 +457,7 @@ Bot.on('message', message => {
         if (message.content.startsWith('Reset Game')) {
             message.delete(1);
             var str = message.content
-            Bot.user.setActivity('Help Alys // Version 2.1.1', { type: 'PLAYING' })
+            Bot.user.setActivity('Help Alys // Version 3.0', { type: 'PLAYING' })
         }
     }
 });
