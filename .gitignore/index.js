@@ -143,7 +143,10 @@ Bot.on('message', message => {
             .on('error', () => [
                 console.error(error);
             ])
-    }         
+    } else if (message.content.startsWith('MusicLeave')) {
+	    if (!message.member.voiceChannel) return message.channel.send('Je suis pas dans un vocal, donc je peux pas leave **BAKA**');
+	    message.member.voiceChannel.leave();
+	    message.channel.send('Et voilà ! Interlude musicale finie ^^');
 });
 
 Bot.on('message', message => {
