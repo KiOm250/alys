@@ -112,119 +112,38 @@ Bot.on('message', message => {
     }})
 }});
 
-Bot.on('message', message =>{
-  if (!message.guild) return;
-  if (message.content.startsWith('MusicJoin')) {
-    const channel = message.guild.channels.get(message.content.split(' ')[1]) || message.member.voiceChannel;
-    if (channel && channel.type === 'voice') {
-      channel.join().then(conn => {
-        conn.player.on('error', (...e) => console.log('player', ...e));
-        if (!connections.has(message.guild.id)) connections.set(message.guild.id, { conn, queue: [] });
-        message.reply('Je suis connectée ^^');
-      });
-    } else {
-      message.reply('T\'est sur un vocal au moins ?');
-    }
-  }
-  else if (message.content.startsWith('MusicPlay')) {
-    if (connections.has(message.guild.id)) {
-      const connData = connections.get(message.guild.id);
-      const queue = connData.queue;
-      const url = message.content.split(' ').slice(1).join(' ')
-        .replace(/</g, '')
-        .replace(/>/g, '');
-      queue.push({ url, message });
-      if (queue.length > 1) {
-        message.reply(`Conservé dans la matrice pour être lançé dans ${queue.length - 1} musiques !`);
-        return;
-      }
-      doQueue(connData);
-    }
-  }
-  else if (message.content.startsWith('MusicSkip')) {
-    if (connections.has(message.guild.id)) {
-      const connData = connections.get(message.guild.id);
-      if (connData.dispatcher) {
-        connData.dispatcher.end();
-      }
-    }
-  } else if (message.content.startsWith('#eval') && message.author.id === 'Votre id') {
-    try {
-      const com = eval(message.content.split(' ').slice(1).join(' '));
-      message.channel.sendMessage(`\`\`\`\n${com}\`\`\``);
-    } catch (e) {
-      console.log(e);
-      message.channel.sendMessage(`\`\`\`\n${e}\`\`\``);
-    }
-  } else if (message.content.startsWith('MusicLeave')) {
-    bot.voiceConnections.get(guildid).disconnect();
-    message.channel.sendMessage('Bye ! ^^');
-  }
-});
-function doQueue(connData) {
-  const conn = connData.conn;
-  const queue = connData.queue;
-  const item = queue[0];
-  if (!item) return;
-  const stream = ytdl(item.url, { filter: 'audioonly' }, { passes: 3 });
-  const dispatcher = conn.playStream(stream);
-  stream.on('info', info => {
-    item.message.reply(`Je lançe **${info.title}** ! ^^`);
-  });
-  dispatcher.on('end', () => {
-    queue.shift();
-    doQueue(connData);
-  });
-  dispatcher.on('error', (...e) => console.log('dispatcher', ...e));
-  connData.dispatcher = dispatcher;
-};
-
 Bot.on('message', message => {
-    if (message.content === 'About Alys') {
-        message.channel.send('**Alys, à propos** \n \n **Version : 3.0** \n Rajouts: Commandes Musicales \n Date de version: 19 Septembre 2018 \n \n **Liste de serveurs** \n' + Bot.guilds.map(guild => guild.name + ' avec ' + guild.memberCount + ' membres !') + '\n \n **Lien d\'invitation** \n https://kiom.neocities.org/alys.html \n \n **Alys Bot by ஜ۩KiOm۩ஜ#0503**')
-}});
-
-Bot.on('message', message => {
-    if (message.content.startsWith('About Server')) {
-        message.channel.send(message.guild.name + ", Infos utiles \n \n **Propriétaire : " + message.guild.owner.user.username  + "** \n \n " + message.guild.memberCount + " membres sue le serveur à ce jour. \n \n Rôles : \n`" + message.guild.roles.map(rôle =>"\n " + rôle.name + " ") + "`")
-}});
-
-Bot.on('message', message => {
-  if (message.content === 'Alys, photo !') {
-    message.reply(message.author.avatarURL);
-  }
-});
-
-Bot.on('message', message => {
-    if(message.content === 'tg') {
-        //message.renply('**Mais comment tu parle** ***NON MAIS OH !***');
-        message.channel.send('**Mais comment tu parle** ***NON MAIS OH !***');
-    }
-});
-
-Bot.on('message', message => {
-    if(message.content.startsWith('OCEAN CRY')) {
-        let member = message.mentions.members.first()
-        if (message.content.startsWith("OCEAN CRY " + member)) {
-            message.channel.sendMessage(member + " meurs noyé ! " + 'https://media1.tenor.com/images/2cb87ee9662473bae186436072f91ce6/tenor.gif?itemid=5543161' )
+    if (message.author.bot) return undefined;
+    if (!message.content.startsWith('Music')) return undefined;
+    const args = message.content.split(' ');
+    
+    if (message.content.startsWith('MusicPlay')) {
+        const voiceChannel = message.member.voiceChannel;
+        if (!voiceChannel) return message.channel.send('Tu as pensé à être dans un vocal ?');
+        const perms = voiceChannel.permissionsFor('message.client.user');
+        if (!perms.has('CONNECT')) {
+			return message.channel.send('Alors... C\'est bête dis comme ça mais un bot musique est sensé pouvoir se co au vocal .__      __.');
+		}
+		if (!perms.has('SPEAK')) {
+			return message.channel.send('Aled mon micro marche pas faut me donner les perms');
         }
-        else
-            message.channel.sendMessage("Ouh j'ai pas localisé la cible. As-tu mentionné ?")
-    }
-});
-
-Bot.on('message', message => {
-    if(message.content === ';-;') {
-        //message.renply('oh no :sob:');
-        message.channel.send('oh no :sob:');
-    }
-});
-
-Bot.on('message', message => {
-    if(message.content === 'GG') {
-        //message.renply(':clap:');
-        message.channel.send(':clap:');
-    }
+        
+        try {
+            var co = await voiceChannel.join();
+        } catch (error) {
+            console.error('Oups ${error}');
+            return message.channel.send('Oups ${error}');
+        }
+        
+        const dis = co.playStream(ytdl(args[1]))
+            .on('end', () => [
+                message.channel.send('Playlist finie ^^');
+                voiceChannel.leave();
+            ])
+            .on('error', () => [
+                console.error(error);
+            ])
+    }         
 });
 
 Bot.on('message', message => {
