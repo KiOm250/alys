@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const Bot = new Discord.Client();
 const ytdl = require('ytdl-core');
 const YoutubeDL = require('youtube-dl');
-const music = require('./music.js')
+const music = require('./music.js');
 
 Bot.on('ready', function() {
     console.log("Je suis prête ^^");
@@ -110,6 +110,8 @@ Bot.on('message', message => {
             },
     }})
 }});
+
+music(Bot);
 
 Bot.on('message', message => {
     if (message.content === 'About Alys') {
