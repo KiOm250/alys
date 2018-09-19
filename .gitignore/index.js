@@ -135,18 +135,21 @@ Bot.on('message', message => {
             return message.channel.send('Oups ${error}');
         }
         
-        const dis = co.playStream(ytdl(args[1]))
-            .on('end', () => [
+        const dispatcher = co.playStream(ytdl(args[1]))
+            .on('end', () => {
                 message.channel.send('Playlist finie ^^');
                 voiceChannel.leave();
-            ])
-            .on('error', () => [
+            })
+            .on('error', () => {
                 console.error(error);
-            ])
+            });
+
     } else if (message.content.startsWith('MusicLeave')) {
 	    if (!message.member.voiceChannel) return message.channel.send('Je suis pas dans un vocal, donc je peux pas leave **BAKA**');
 	    message.member.voiceChannel.leave();
-	    message.channel.send('Et voilà ! Interlude musicale finie ^^');
+        message.channel.send('Et voilà ! Interlude musicale finie ^^');
+        return underfined;
+    }
 });
 
 Bot.on('message', message => {
