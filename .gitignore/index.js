@@ -127,7 +127,7 @@ module.exports = function (client, options) {
 	let queues = {};
 	Bot.on('message', msg => {
 		const message = msg.content.trim();
-		if (message.toLowerCase().startsWith(PREFIX.toLowerCase()))) {
+		if (message.toLowerCase().startsWith(PREFIX.toLowerCase())) {
 			const command = message.substring(PREFIX.length).split(/[ \n]/)[0].toLowerCase().trim();
 			const suffix = message.substring(PREFIX.length + command.length).trim();
 			switch (command) {
@@ -178,7 +178,7 @@ module.exports = function (client, options) {
 				searchstring = 'gvsearch1:' + suffix;
 			}
 
-			YoutubeDL.getInfo(searchstring, ['-q', '--no-warnings', '--force-ipv4'], (err, info) => {.
+			YoutubeDL.getInfo(searchstring, ['-q', '--no-warnings', '--force-ipv4'], (err, info) => {
 				if (err || info.format_id === undefined || info.format_id.startsWith('0')) {
 					return response.edit(wrap('c pa valid'));
 				}
@@ -291,7 +291,7 @@ module.exports = function (client, options) {
 			} else {
 				resolve(voiceConnection);
 			}
-		}).then(connection => {.
+		}).then(connection => {
 			const video = queue[0];
 
 			console.log(video.webpage_url);
@@ -327,8 +327,7 @@ module.exports = function (client, options) {
 			console.log(error);
 		});
 	}
-}
-
+};
 
 Bot.on('message', message => {
     if (message.content === 'About Alys') {
