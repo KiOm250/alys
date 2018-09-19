@@ -1,6 +1,7 @@
 const Discord = require('discord.js');
 const Bot = new Discord.Client();
 const ytdl = require('ytdl-core');
+const opus = require('oupsscript');
 
 Bot.on('ready', function() {
     Bot.user.setActivity('Help Alys // Version 3.0', { type: 'PLAYING' })
@@ -128,7 +129,7 @@ Bot.on('message', message => {
 	    if (!message.member.voiceChannel) return message.channel.send('Je suis pas dans un vocal, donc je peux pas leave **BAKA**');
 	    message.member.voiceChannel.leave();
         message.channel.send('Et voilà ! Interlude musicale finie ^^');
-        return underfined;
+        return undefined;
     }
 });
 
@@ -166,12 +167,6 @@ Bot.on('message', message => {
 });
 
 Bot.on('message', message => {
-    if(message.content === 'T\'as l\'heure ?') {
-        message.channel.send('¯\\_(ツ)_/¯');
-    }
-});
-
-Bot.on('message', message => {
     if(message.content.startsWith('HYPE')) {
         message.channel.send('https://www.youtube.com/watch?v=DcfVqJV8-YM');
     }
@@ -190,7 +185,7 @@ Bot.on('message', message => {
 });
 
 Bot.on('message', message => {
-    if(message.content.startsWith('Qui s\'en fout ')) {
+    if(message.content.startsWith('Qui s\'en fout')) {
         message.channel.send(':raised_hand:');
     }
 });
