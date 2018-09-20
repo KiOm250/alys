@@ -121,7 +121,6 @@ Bot.on('message', message =>{
         doQueue(connData);
       }
     }
-   
     else if (message.content.startsWith('MusicSkip')) {
       if (connections.has(message.guild.id)) {
         const connData = connections.get(message.guild.id);
@@ -130,18 +129,16 @@ Bot.on('message', message =>{
         }
       }
     } 
-    
     else if (message.content.startsWith('MusicLeave')) {
         const channel = message.guild.channels.get(message.content.split(' ')[1]) || message.member.voiceChannel;
         if (channel && channel.type === 'voice') {
-          channel.join()
+          channel.leave();
           message.channel.send('Et voilà ! Interlude musicale finie ^^');
           return undefined;
         }
       }
     } 
-    
-    ,function doQueue(connData) {
+    function doQueue(connData) {
     const conn = connData.conn;
     const queue = connData.queue;
     const item = queue[0];
