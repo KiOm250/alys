@@ -316,7 +316,7 @@ Bot.on('message', message => {
         if (message.content.startsWith('Reset Game')) {
             message.delete(1);
             var str = message.content
-            Bot.user.setActivity('Help Alys // Version 3.0', { type: 'PLAYING' })
+            Bot.user.setActivity('Help Alys // Version 2.2', { type: 'PLAYING' })
         }
     }
 });
