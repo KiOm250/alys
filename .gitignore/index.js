@@ -3,8 +3,15 @@ const Bot = new Discord.Client();
 const ytdl = require('ytdl-core');
 
 Bot.on('ready', function() {
-    Bot.user.setActivity('Help Alys // Version 3.0', { type: 'PLAYING' })
+    Bot.user.setActivity('Help Alys // Version 2.2', { type: 'PLAYING' })
 });
+
+Bot.on('guildCreate', (g) => {
+    let channels = g.channels
+    channels = channels.filter(c => c.type === "text")
+    let defaultChannel = channels.first()
+    if (defaultChannel && defaultChannel.send) defaultChannel.send('**OHAYO !!** :wawe: \nMerci de m\'avoir invitée ^^ \nPour toute aide : `Help Alys` Ou contacter @KiOm#0503')
+})
 
 Bot.on('message', message => {
     if (message.content === 'Help Alys') {
@@ -64,98 +71,31 @@ Bot.on('message', message => {
             ],
             footer: {
                 icon_url: Bot.user.avatarURL,
-                text: 'Alys Bot by kion#0503 // Note de mise à jour avec "About Alys"',
+                text: 'Alys Bot by KiOm#0503',
             },
     }});
 }});
-
 Bot.on('message', message => {
-    if (message.content === 'MusicHelp') {
-        message.channel.send({embed:  {
-            color: 3447003,
-            title: 'Commandes',
-            description: 'Les Musiques c\'est la vie ! Donc je vous en fait écouter ^^ (c beau la vie kan mem)',
-            fields: [
-                {
-                    name: '**MusicPlay**',
-                    value: 'Pas besoin de te faire un dessin...'
-                },
-                {
-                    name: '**MusicLeave**',
-                    value: 'Ne me laissez pas seule'
-                },
-            ],
-            footer: {
-                icon_url: Bot.user.avatarURL,
-                text: 'Alys Bot by kion#0503 // Note de mise à jour avec "About Alys"',
-            },
-    }});
-}});
-
-Bot.on('message', message =>{
-    if (!message.guild) return;
-    if (message.content.startsWith('MusicJoin')) {
-      const channel = message.guild.channels.get(message.content.split(' ')[1]) || message.member.voiceChannel;
-      if (channel && channel.type === 'voice') {
-        channel.join().then(conn => {
-          conn.player.on('error', (...e) => console.log('player', ...e));
-          if (!connections.has(message.guild.id)) connections.set(message.guild.id, { conn, queue: [] });
-          message.reply('Je suis connectée ^^');
-        });
-      } else {
-        message.reply('T\'est sur un vocal au moins ?');
+    let embed = new Discord.RichEmbed()
+	    .setAuthor('Informations sur le Serveur', bot.user.displayAvatarURL)
+    	.setColor('AF82CD')
+    	.addField('Serveur', message.guild)
+    	.addField('ID:', guild.id)
+    	.addField("Fondateur", guild.owner.user.tag)
+    	.addField(`Membres : (${guild.memberCount})`, `${guild.members.filter(m => m.user.presence.status === "online").size} en ligne`)
+    	.addField("Channels", guild.channels.size)
+    	.addField("Rôle(s)", guild.roles.size)
+    	.addField("Region", guild.region)
+    	.addField("Verification Level:", guild.verificationLevel)
+    	.addField("Date de création du Serveur", finalString1)
+    	.setThumbnail(guild.iconURL)
+       .setTimestamp()
+       .setFooter(`${bot.user.username}`, `${bot.user.displayAvatarURL}`);
+    if(message.content === 'About Server') {
+          //message.renply(':clap:');
+          message.renply('AH NON TU LA FERME ! PAS DE **H** ICI !');
       }
-    }
-    else if (message.content.startsWith('MusicPlay')) {
-      if (connections.has(message.guild.id)) {
-        const connData = connections.get(message.guild.id);
-        const queue = connData.queue;
-        const url = message.content.split(' ').slice(1).join(' ')
-          .replace(/</g, '')
-          .replace(/>/g, '');
-        queue.push({ url, message });
-        if (queue.length > 1) {
-          message.reply(`Conservé dans la matrice pour être lançé dans ${queue.length - 1} musiques !`);
-          return;
-        }
-        doQueue(connData);
-      }
-    }
-    else if (message.content.startsWith('MusicSkip')) {
-      if (connections.has(message.guild.id)) {
-        const connData = connections.get(message.guild.id);
-        if (connData.dispatcher) {
-          connData.dispatcher.end();
-        }
-      }
-    } 
-    else if (message.content.startsWith('MusicLeave')) {
-        const channel = message.guild.channels.get(message.content.split(' ')[1]) || message.member.voiceChannel;
-        if (channel && channel.type === 'voice') {
-          channel.leave();
-          message.channel.send('Et voilà ! Interlude musicale finie ^^');
-          return undefined;
-        }
-      }
-    } 
-    function doQueue(connData) {
-    const conn = connData.conn;
-    const queue = connData.queue;
-    const item = queue[0];
-    if (!item) return;
-    const stream = ytdl(item.url, { filter: 'audioonly' }, { passes: 3 });
-    const dispatcher = conn.playStream(stream);
-    stream.on('info', info => {
-      item.message.reply(`Je lançe **${info.title}** ! ^^`);
-    });
-    dispatcher.on('end', () => {
-      queue.shift();
-      doQueue(connData);
-    });
-    dispatcher.on('error', (...e) => console.log('dispatcher', ...e));
-    connData.dispatcher = dispatcher;
-  }
-  );
+  });
   
   Bot.on('message', message => {
       if(message.content === 'Les lapins.') {
