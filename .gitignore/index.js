@@ -6,13 +6,6 @@ Bot.on('ready', function() {
     Bot.user.setActivity('Help Alys // Version 2.2', { type: 'PLAYING' })
 });
 
-Bot.on('guildCreate', (g) => {
-    let channels = g.channels
-    channels = channels.filter(c => c.type === "text")
-    let defaultChannel = channels.first()
-    if (defaultChannel && defaultChannel.send) defaultChannel.send('**OHAYO !!** :wawe: \nMerci de m\'avoir invitée ^^ \nPour toute aide : `Help Alys` Ou contacter @KiOm#0503')
-})
-
 Bot.on('message', message => {
     if (message.content === 'Help Alys') {
         message.channel.send({embed:  {
