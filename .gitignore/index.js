@@ -1,8 +1,12 @@
 const Discord = require('discord.js');
 const Bot = new Discord.Client();
-const ytdl = require('ytdl-core');
+
+const PREFIX = "!";
+
+var Overraid = ""
 
 Bot.on('ready', function() {
+    console.log("Je suis prête ^^");
     Bot.user.setActivity('Help Alys // Version 2.2', { type: 'PLAYING' })
 });
 
@@ -16,10 +20,6 @@ Bot.on('message', message => {
                 {
                     name: '**Help Alys**',
                     value: 'Bah à ton avis on est où là ?'
-                },
-                {
-                    name: '**MusicHelp**',
-                    value: 'Le help pour le mode musical ^^'
                 },
                 {
                     name: '**Alys, photo !**',
@@ -64,38 +64,65 @@ Bot.on('message', message => {
             ],
             footer: {
                 icon_url: Bot.user.avatarURL,
-                text: 'Alys Bot by KiOm#0503',
+                text: 'Alys Bot by kion#0503 // Note de mise à jour avec "About Alys"',
             },
-    }});
+    }})
 }});
+
 Bot.on('message', message => {
-    let embed = new Discord.RichEmbed()
-	    .setAuthor('Informations sur le Serveur', bot.user.displayAvatarURL)
-    	.setColor('AF82CD')
-    	.addField('Serveur', message.guild)
-    	.addField('ID:', guild.id)
-    	.addField("Fondateur", guild.owner.user.tag)
-    	.addField(`Membres : (${guild.memberCount})`, `${guild.members.filter(m => m.user.presence.status === "online").size} en ligne`)
-    	.addField("Channels", guild.channels.size)
-    	.addField("Rôle(s)", guild.roles.size)
-    	.addField("Region", guild.region)
-    	.addField("Verification Level:", guild.verificationLevel)
-    	.addField("Date de création du Serveur", finalString1)
-    	.setThumbnail(guild.iconURL)
-       .setTimestamp()
-       .setFooter(`${bot.user.username}`, `${bot.user.displayAvatarURL}`);
-    if(message.content === 'About Server') {
-          //message.renply(':clap:');
-          message.renply('AH NON TU LA FERME ! PAS DE **H** ICI !');
-      }
-  });
-  
-  Bot.on('message', message => {
-      if(message.content === 'Les lapins.') {
-          //message.renply(':clap:');
-          message.renply('AH NON TU LA FERME ! PAS DE **H** ICI !');
-      }
-  });
+    if (message.content === 'About Alys') {
+        message.channel.send('**Alys, à propos** \n \n **Version : 2.2** \n Rajouts: Commande Administrateur // Nouveau `About Server / Alys, photo !` // MAJ `OCEAN CRY` // Suppression `@everyone` \n Date de version: 09 Septembre 2018 \n \n **Liste de serveurs** \n' + Bot.guilds.map(guild => guild.name + ' avec ' + guild.memberCount + ' membres !') + '\n \n **Lien d\'invitation** \n https://kiom.neocities.org/alys.html \n \n **Alys Bot by ஜ۩KiOm۩ஜ#0503**')
+}});
+
+Bot.on('message', message => {
+    if (message.content.startsWith('About Server')) {
+        message.channel.send(message.guild.name + ", Infos utiles \n \n **Propriétaire : " + message.guild.owner.user.username  + "** \n \n " + message.guild.memberCount + " membres sue le serveur à ce jour. \n \n Rôles : \n`" + message.guild.roles.map(rôle =>"\n " + rôle.name + " ") + "`")
+}});
+
+Bot.on('message', message => {
+  if (message.content === 'Alys, photo !') {
+    message.reply(message.author.avatarURL);
+  }
+});
+
+Bot.on('message', message => {
+    if(message.content === 'tg') {
+        //message.renply('**Mais comment tu parle** ***NON MAIS OH !***');
+        message.channel.send('**Mais comment tu parle** ***NON MAIS OH !***');
+    }
+});
+
+Bot.on('message', message => {
+    if(message.content.startsWith('OCEAN CRY')) {
+        let member = message.mentions.members.first()
+        if (message.content.startsWith("OCEAN CRY " + member)) {
+            message.channel.sendMessage(member + " meurs noyé ! " + 'https://media1.tenor.com/images/2cb87ee9662473bae186436072f91ce6/tenor.gif?itemid=5543161' )
+        }
+        else
+            message.channel.sendMessage("Ouh j'ai pas localisé la cible. As-tu mentionné ?")
+    }
+});
+
+Bot.on('message', message => {
+    if(message.content === ';-;') {
+        //message.renply('oh no :sob:');
+        message.channel.send('oh no :sob:');
+    }
+});
+
+Bot.on('message', message => {
+    if(message.content === 'GG') {
+        //message.renply(':clap:');
+        message.channel.send(':clap:');
+    }
+});
+
+Bot.on('message', message => {
+    if(message.content === 'Les lapins.') {
+        //message.renply(':clap:');
+        message.renply('AH NON TU LA FERME ! PAS DE **H** ICI !');
+    }
+});
 
 var prefer = [
     "**TU VAS MOURIR POUR AVOIR DIS CECI**",
@@ -113,54 +140,70 @@ var prefer = [
 
 Bot.on('message', message => {
     if(message.content === '33') {
+        //message.renply('**KWA MIGO EST MORT ?** Ah non fausse joie *triste*');
         message.channel.send('806');
     }
 });
 
 Bot.on('message', message => {
     if(message.content === 'Sors.') {
+        //message.renply('**KWA MIGO EST MORT ?** Ah non fausse joie *triste*');
         message.channel.send(':door:');
     }
 });
 
 Bot.on('message', message => {
+    if(message.content === 'T\'as l\'heure ?') {
+        //message.renply('**KWA MIGO EST MORT ?** Ah non fausse joie *triste*');
+        message.channel.send('¯\\_(ツ)_/¯');
+    }
+});
+
+Bot.on('message', message => {
     if(message.content.startsWith('HYPE')) {
+        //message.renply('**KWA MIGO EST MORT ?** Ah non fausse joie *triste*');
         message.channel.send('https://www.youtube.com/watch?v=DcfVqJV8-YM');
     }
 });
 
 Bot.on('message', message => {
     if(message.content === 'Despacito') {
+        //message.renply('**KWA MIGO EST MORT ?** Ah non fausse joie *triste*');
         message.channel.send('die');
     }
 });
 
 Bot.on('message', message => {
     if(message.content === 'Despacito 2') {
+        //message.renply('**KWA MIGO EST MORT ?** Ah non fausse joie *triste*');
         message.channel.send('https://www.youtube.com/watch?v=W3GrSMYbkBE');
     }
 });
 
 Bot.on('message', message => {
-    if(message.content.startsWith('Qui s\'en fout')) {
+    if(message.content.startsWith('Qui s\'en fout ')) {
+        //message.renply('**KWA MIGO EST MORT ?** Ah non fausse joie *triste*');
         message.channel.send(':raised_hand:');
     }
 });
 
 Bot.on('message', message => {
     if(message.content.startsWith('Nice')) {
+        //message.renply('**KWA MIGO EST MORT ?** Ah non fausse joie *triste*');
         message.channel.send('*tousse* Nice — prononcé [nis] (Nissa ou Niça en nissart, Nizza ou Nizza Marittima en italien) — est une commune du Sud-Est de la France, préfecture du département des Alpes-Maritimes et deuxième ville de la région Provence-Alpes-Côte d\'Azur derrière Marseille. Située à l\'extrémité sud-est de la France, à une trentaine de kilomètres de la frontière franco-italienne, elle est établie sur les bords de la mer Méditerranée, le long de la baie des Anges et à l\'embouchure du Paillon. Avec 342 522 habitants au dernier recensement de 2015, elle est la cinquième commune de France en population (après Paris, Marseille, Lyon et Toulouse). Elle est située au cœur de la septième aire urbaine de Fra... *Ok c\'est pas drôle*');
     }
 });
 
 Bot.on('message', message => {
     if(message.content.startsWith('Nancy')) {
+        //message.renply('**KWA MIGO EST MORT ?** Ah non fausse joie *triste*');
         message.channel.send('https://www.youtube.com/watch?v=exkQZM2VE6I');
     }
 });
 
 Bot.on('message', message => {
     if(message.content.startsWith('LE FUN')) {
+        //message.renply('**KWA MIGO EST MORT ?** Ah non fausse joie *triste*');
         message.channel.send({
             file : "KiOmSEclate.gif"
          });
@@ -169,6 +212,7 @@ Bot.on('message', message => {
         
 Bot.on('message', message => {
     if(message.content.startsWith('send help')) {
+        //message.renply('**KWA MIGO EST MORT ?** Ah non fausse joie *triste*');
         message.channel.send({
             file : "send help.PNG"
          });
@@ -177,6 +221,7 @@ Bot.on('message', message => {
 
 Bot.on('message', message => {
     if(message.content.startsWith('RIP')) {
+        //message.renply('**KWA MIGO EST MORT ?** Ah non fausse joie *triste*');
         message.channel.send({
             file : "tombstone.jpg"
          });
@@ -274,6 +319,37 @@ var Despacito = [
       }
 });
 
+
+Bot.on('message', message => {
+    if (message.author.id == 352769640218361867) {
+        if (message.content.startsWith('RPsayBOT')) {
+            var str = message.content
+            Bot.channels.get("470215594269212682").send(str.substring(9))
+        }
+    }
+});
+
+Bot.on('message', message => {
+    if (message.author.id == 352769640218361867) {
+        if (message.content.startsWith('Overraid')) {
+            message.delete(1);
+            var str = message.content
+            Bot.channels.get(Overraid).send(str.substring(8))
+        }
+    }
+});
+
+Bot.on('message', message => {
+    if (message.author.id == 352769640218361867) {
+        if (message.content.startsWith('Set Overraid')) {
+            message.delete(1);
+            var str = message.content
+            Overraid = str.substring(12)
+        }
+    }
+});
+
+
 Bot.on('message', message => {
     if (message.author.id == 352769640218361867) {
         if (message.content.startsWith('Alys, matrice !')) {
@@ -309,7 +385,7 @@ Bot.on('message', message => {
         if (message.content.startsWith('Reset Game')) {
             message.delete(1);
             var str = message.content
-            Bot.user.setActivity('Help Alys // Version 2.2', { type: 'PLAYING' })
+            Bot.user.setActivity('Help Alys // Version 2.1.1', { type: 'PLAYING' })
         }
     }
 });
@@ -348,7 +424,5 @@ Bot.on('message', message => {
     }
   }      
 });
-
-
 
 Bot.login(process.env.TOKEN) // Token Sécurisé tavu
