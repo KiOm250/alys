@@ -71,7 +71,7 @@ Bot.on('message', message => {
 
 Bot.on('message', message => {
     if (message.content === 'About Alys') {
-        message.channel.send('**Alys, à propos** \n \n **Version : 2.2** \n Rajouts: Commande Administrateur // Nouveau `About Server / Alys, photo !` // MAJ `OCEAN CRY` // Suppression `@everyone` \n Date de version: 09 Septembre 2018 \n \n **Liste de serveurs** \n' + Bot.guilds.map(guild => guild.name + ' avec ' + guild.memberCount + ' membres !') + '\n \n **Lien d\'invitation** \n https://kiom.neocities.org/alys.html \n \n **Alys Bot by ஜ۩KiOm۩ஜ#0503**')
+        message.channel.send('**Alys, à propos** \n \n **Version : 3.0** \n Rajouts: MAJ Commandes \n Date de version: 09 Septembre 2018 \n \n **Liste de serveurs** \n' + Bot.guilds.map(guild => guild.name + ' avec ' + guild.memberCount + ' membres !') + '\n \n **Lien d\'invitation** \n https://kiom.neocities.org/alys.html \n \n **Alys Bot by ஜ۩KiOm۩ஜ#0503**')
 }});
 
 Bot.on('message', message => {
@@ -142,6 +142,90 @@ Bot.on('message', message => {
     if(message.content === '33') {
         //message.renply('**KWA MIGO EST MORT ?** Ah non fausse joie *triste*');
         message.channel.send('806');
+    }
+});
+
+Bot.on('message', message => {
+    if(message.content === '250') {
+        message.channel.send(message.author + " repart avec 1600 :yen: et la démo de Run VIP !");
+    }
+});
+
+Bot.on('message', message => {
+    if(message.content === '300') {
+        message.channel.send(message.author + " repart avec 500 :yen:");
+    }
+});
+
+Bot.on('message', message => {
+    if(message.content === '321') {
+        message.channel.send(message.author + " sais compter mais à l'envers. Pour la peine, pas le droit de courir aveant les 400 !");
+    }
+});
+
+Bot.on('message', message => {
+    if(message.content === '400') {
+        message.channel.send(message.author + " repart avec 1500 :yen:");
+    }
+});
+
+Bot.on('message', message => {
+    if(message.content === '444') {
+        message.channel.send(message.author + " à fait le chiffre des enfers. oui on s'en fout complètement. 1000 :yen:");
+    }
+});
+
+Bot.on('message', message => {
+    if(message.content === '500') {
+        message.channel.send(message.author + " repart avec 1000 :yen:");
+    }
+});
+
+Bot.on('message', message => {
+    if(message.content === '600') {
+        message.channel.send(message.author + " repart avec 500 :yen:");
+    }
+});
+
+Bot.on('message', message => {
+    if(message.content === '666') {
+        message.channel.send(message.author + " EST UN SATANIQUE AAAAAAAAA, MOINS 2000 :yen: ET TU EST CHASSE LE TEMPS D'ÊTRE EXORCISE (normalement à 700 c'est bon)");
+    }
+});
+
+Bot.on('message', message => {
+    if(message.content === '700') {
+        message.channel.send(message.author + " repart avec 1000 :yen:");
+    }
+});
+
+Bot.on('message', message => {
+    if(message.content === '800') {
+        message.channel.send(message.author + " repart avec 1500 :yen:");
+    }
+});
+
+Bot.on('message', message => {
+    if(message.content === '900') {
+        message.channel.send(message.author + " repart avec 500 :yen: ! DERNIERE LIGNE DROITE LES AMIS !");
+    }
+});
+
+Bot.on('message', message => {
+    if(message.content === '911') {
+        message.channel.send("**Rapport du FBI :** \n" + message.author + " à bel et bien été capturé, il ne pourra plus participer à la course.");
+    }
+});
+
+Bot.on('message', message => {
+    if(message.content === '950') {
+        message.channel.send("Non rien, il reste 50 nombres.");
+    }
+});
+
+Bot.on('message', message => {
+    if(message.content === '1000') {
+        message.channel.send(message.author + " FINI LA COURSE AVEC BRIO ! Un grand GG à lui :clap: Et n'oublions pas que les deux personnes avant auront leur lot aussi !");
     }
 });
 
