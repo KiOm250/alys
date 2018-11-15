@@ -75,6 +75,23 @@ Bot.on('message', message => {
 }});
 
 Bot.on('message', message => {
+    if (message.content === 'About Alys') {
+        const embed = new Discord.RichEmbed();
+        embed.setTitle('Alys, About')
+        .setAuthor('Alys', 'https://i.imgur.com/wWgbjIG')
+        .setColor(3447003)
+        .setDescription('Version 3.0.1 // 15 Novembre')
+        .setFooter('Alys Bot by KiOm#0503', 'https://i.imgur.com/wWgbjIG')
+        .setImage('https://i.imgur.com/AIm0I46')
+        
+        embed.addField('Rajouts:', 'MAJ About')
+        .addField('Liste de serveurs', Bot.guilds.map(guild => guild.name + ' avec ' + guild.memberCount + ' membres !')
+        .addField('Lien d\'invitation', 'https://kiom.neocities.org/alys.html')
+        
+        message.channel.send({embed: embed});
+}});
+
+Bot.on('message', message => {
     if (message.content.startsWith('Aserveur')) {
         message.channel.send(message.guild.name + ", Infos utiles \n \n **Propriétaire : " + message.guild.owner.user.username  + "** \n \n " + message.guild.memberCount + " membres sue le serveur à ce jour. \n \n Rôles : \n`" + message.guild.roles.map(rôle =>"\n " + rôle.name + " ") + "`")
 }});
@@ -87,7 +104,6 @@ Bot.on('message', message => {
 
 Bot.on('message', message => {
     if(message.content === 'tg') {
-        //message.renply('**Mais comment tu parle** ***NON MAIS OH !***');
         message.channel.send('**Mais comment tu parle** ***NON MAIS OH !***');
     }
 });
@@ -105,14 +121,12 @@ Bot.on('message', message => {
 
 Bot.on('message', message => {
     if(message.content === ';-;') {
-        //message.renply('oh no :sob:');
         message.channel.send('oh no :sob:');
     }
 });
 
 Bot.on('message', message => {
     if(message.content === 'GG') {
-        //message.renply(':clap:');
         message.channel.send(':clap:');
     }
 });
@@ -146,78 +160,6 @@ Bot.on('message', message => {
 });
 
 Bot.on('message', message => {
-    if(message.content === '250') {
-        message.channel.send(message.author + " repart avec 1600 :yen: et la démo de Run VIP !");
-    }
-});
-
-Bot.on('message', message => {
-    if(message.content === '300') {
-        message.channel.send(message.author + " repart avec 500 :yen:");
-    }
-});
-
-Bot.on('message', message => {
-    if(message.content === '321') {
-        message.channel.send(message.author + " sais compter mais à l'envers. Pour la peine, pas le droit de courir aveant les 400 !");
-    }
-});
-
-Bot.on('message', message => {
-    if(message.content === '400') {
-        message.channel.send(message.author + " repart avec 1500 :yen:");
-    }
-});
-
-Bot.on('message', message => {
-    if(message.content === '444') {
-        message.channel.send(message.author + " à fait le chiffre des enfers. oui on s'en fout complètement. 1000 :yen:");
-    }
-});
-
-Bot.on('message', message => {
-    if(message.content === '500') {
-        message.channel.send(message.author + " repart avec 1000 :yen:");
-    }
-});
-
-Bot.on('message', message => {
-    if(message.content === '600') {
-        message.channel.send(message.author + " repart avec 500 :yen:");
-    }
-});
-
-Bot.on('message', message => {
-    if(message.content === '666') {
-        message.channel.send(message.author + " EST UN SATANIQUE AAAAAAAAA, MOINS 2000 :yen: ET TU EST CHASSE LE TEMPS D'ÊTRE EXORCISE (normalement à 700 c'est bon)");
-    }
-});
-
-Bot.on('message', message => {
-    if(message.content === '700') {
-        message.channel.send(message.author + " repart avec 1000 :yen:");
-    }
-});
-
-Bot.on('message', message => {
-    if(message.content === '800') {
-        message.channel.send(message.author + " repart avec 1500 :yen:");
-    }
-});
-
-Bot.on('message', message => {
-    if(message.content === '900') {
-        message.channel.send(message.author + " repart avec 500 :yen: ! DERNIERE LIGNE DROITE LES AMIS !");
-    }
-});
-
-Bot.on('message', message => {
-    if(message.content === '911') {
-        message.channel.send("**Rapport du FBI :** \n" + message.author + " à bel et bien été capturé, il ne pourra plus participer à la course.");
-    }
-});
-
-Bot.on('message', message => {
     if(message.content === '950') {
         message.channel.send("Non rien, il reste 50 nombres.");
     }
@@ -231,56 +173,48 @@ Bot.on('message', message => {
 
 Bot.on('message', message => {
     if(message.content === 'Sors.') {
-        //message.renply('**KWA MIGO EST MORT ?** Ah non fausse joie *triste*');
         message.channel.send(':door:');
     }
 });
 
 Bot.on('message', message => {
     if(message.content === 'T\'as l\'heure ?') {
-        //message.renply('**KWA MIGO EST MORT ?** Ah non fausse joie *triste*');
         message.channel.send('¯\\_(ツ)_/¯');
     }
 });
 
 Bot.on('message', message => {
     if(message.content.startsWith('HYPE')) {
-        //message.renply('**KWA MIGO EST MORT ?** Ah non fausse joie *triste*');
         message.channel.send('https://www.youtube.com/watch?v=DcfVqJV8-YM');
     }
 });
 
 Bot.on('message', message => {
     if(message.content === 'Despacito') {
-        //message.renply('**KWA MIGO EST MORT ?** Ah non fausse joie *triste*');
         message.channel.send('die');
     }
 });
 
 Bot.on('message', message => {
     if(message.content === 'Despacito 2') {
-        //message.renply('**KWA MIGO EST MORT ?** Ah non fausse joie *triste*');
         message.channel.send('https://www.youtube.com/watch?v=W3GrSMYbkBE');
     }
 });
 
 Bot.on('message', message => {
     if(message.content.startsWith('Qui s\'en fout ')) {
-        //message.renply('**KWA MIGO EST MORT ?** Ah non fausse joie *triste*');
         message.channel.send(':raised_hand:');
     }
 });
 
 Bot.on('message', message => {
     if(message.content.startsWith('Nancy')) {
-        //message.renply('**KWA MIGO EST MORT ?** Ah non fausse joie *triste*');
         message.channel.send('https://www.youtube.com/watch?v=exkQZM2VE6I');
     }
 });
 
 Bot.on('message', message => {
     if(message.content.startsWith('LE FUN')) {
-        //message.renply('**KWA MIGO EST MORT ?** Ah non fausse joie *triste*');
         message.channel.send({
             file : "KiOmSEclate.gif"
          });
@@ -289,7 +223,6 @@ Bot.on('message', message => {
         
 Bot.on('message', message => {
     if(message.content.startsWith('send help')) {
-        //message.renply('**KWA MIGO EST MORT ?** Ah non fausse joie *triste*');
         message.channel.send({
             file : "send help.PNG"
          });
@@ -298,7 +231,6 @@ Bot.on('message', message => {
 
 Bot.on('message', message => {
     if(message.content.startsWith('RIP')) {
-        //message.renply('**KWA MIGO EST MORT ?** Ah non fausse joie *triste*');
         message.channel.send({
             file : "tombstone.jpg"
          });
