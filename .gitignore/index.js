@@ -75,23 +75,6 @@ Bot.on('message', message => {
 }});
 
 Bot.on('message', message => {
-    if (message.content === 'About Alys') {
-        const embed = new Discord.RichEmbed();
-        embed.setTitle('Alys, About')
-        .setAuthor('Alys', 'https://i.imgur.com/wWgbjIG')
-        .setColor(3447003)
-        .setDescription('Version 3.0.1 // 15 Novembre')
-        .setFooter('Alys Bot by KiOm#0503', 'https://i.imgur.com/wWgbjIG')
-        .setImage('https://i.imgur.com/AIm0I46')
-        
-        embed.addField('Rajouts:', 'MAJ About')
-        .addField('Liste de serveurs', Bot.guilds.map(guild => guild.name + ' avec ' + guild.memberCount + ' membres !')
-        .addField('Lien d\'invitation', 'https://kiom.neocities.org/alys.html')
-        
-        message.channel.send({embed: embed});
-}});
-
-Bot.on('message', message => {
     if (message.content.startsWith('Aserveur')) {
         message.channel.send(message.guild.name + ", Infos utiles \n \n **Propriétaire : " + message.guild.owner.user.username  + "** \n \n " + message.guild.memberCount + " membres sue le serveur à ce jour. \n \n Rôles : \n`" + message.guild.roles.map(rôle =>"\n " + rôle.name + " ") + "`")
 }});
