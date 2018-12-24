@@ -143,18 +143,6 @@ Bot.on('message', message => {
 });
 
 Bot.on('message', message => {
-    if(message.content === '950') {
-        message.channel.send("Non rien, il reste 50 nombres.");
-    }
-});
-
-Bot.on('message', message => {
-    if(message.content === '1000') {
-        message.channel.send(message.author + " FINI LA COURSE AVEC BRIO ! Un grand GG à lui :clap: Et n'oublions pas que les deux personnes avant auront leur lot aussi !");
-    }
-});
-
-Bot.on('message', message => {
     if(message.content === 'Sors.') {
         message.channel.send(':door:');
     }
