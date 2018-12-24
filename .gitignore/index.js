@@ -7,7 +7,7 @@ var Overraid = ""
 
 Bot.on('ready', function() {
     console.log("Je suis prête ^^");
-    Bot.user.setActivity('Ahelp // Version 3.0 // Serveurs : ${bot.guilds.size}', { type: 'PLAYING' })
+    Bot.user.setActivity('Ahelp // Version 3.0 // Serveurs : ' + bot.guilds.size, { type: 'PLAYING' })
 });
 
 Bot.on('message', message => {
