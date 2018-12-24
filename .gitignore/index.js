@@ -7,7 +7,7 @@ var Overraid = ""
 
 Bot.on('ready', function() {
     console.log("Je suis prête ^^");
-    Bot.user.setActivity('Ahelp // Version 3.0', { type: 'PLAYING' })
+    Bot.user.setActivity('Ahelp // Version 3.0 // Serveurs : ${bot.guilds.size}', { type: 'PLAYING' })
 });
 
 Bot.on('message', message => {
@@ -334,7 +334,7 @@ Bot.on('message', message => {
         if (message.content.startsWith('Reset Game')) {
             message.delete(1);
             var str = message.content
-            Bot.user.setActivity('Ahelp // Version 3.0', { type: 'PLAYING' })
+            Bot.user.setActivity('Ahelp // Version 3.0 // Serveurs : ${bot.guilds.size}', { type: 'PLAYING' })
         }
     }
 });
