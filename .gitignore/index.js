@@ -261,6 +261,46 @@ var NEFFEX = [
       }
 });
 
+var verbs = [
+  "Allume", "Avale", "Amalgame", "Atomise", "Assaisonne",
+  "Badigeonne", "Baise", "Bourre", "Baptise", "Bouillonne", "Barbouille", "Bascule", "Balaye", "Bastonne",
+  "Climatise", "Catapulte", "Culbute", "Cuisine", "Crucifie",
+  "DÃ©calotte", "DÃ©fouraille", "DÃ©foreste", "DÃ©racine", "DÃ©terre", "DÃ©marre",
+  "Emince", "Eviscere", "Engraisse", "Enterre", "Epluche",
+  "Fiscalise", "Fossilise", "Fourre", "Falsifie",
+  "Gargarise", "Grignote", "Goupille",
+  "Humidifie", "Hydrate", "Hydrogenise",
+  "Inhale", "Informatise", "Irrite", "Immortalise", "Irradie", "Immunise",
+  "Javellise", "Jalonne", "Jardine",
+  "Kidnappe", "Klaxonne",
+  "Lessive", "Lobotomise", "Lardonne", "LinÃ©arise", "Localise", "LiquÃ©fie", "LÃ©galise",
+  "Momifie", "MÃ©tÃ©orise", "Massacre", "Mazoute", "Multiplie", "Mensualise", "MinÃ©ralise", "MagnÃ©tise", "Mange", "Matraque",
+  "NÃ©bulise", "NumÃ©rise", "Napalmise", "Nettoie", "NuclÃ©arise", "Nitrifie",
+  "Occidentalise", "Opprime", "OxygÃ¨ne", "Octuple", "Obnubile",
+  "Pianotte", "Parfume", "PondÃ¨re", "ProphÃ©tise", "Pronostique", "Postiche", "Pasteurise", "Perfore", "Pourchasse", "PulvÃ©rise", "Procrastine",
+  "Quadrille", "Quadruple", "Querelle", "Quantifie", "Quintuple",
+  "RecÃ¨le", "Racommode", "RÃ©volutionne", "Rumine", "Ruisselle", "RÃ©quisitionne", "Rafale",
+  "Saupoudre", "Surcharge", "Surchauffe", "SurcÃ´te", "Scannerise", "Surligne", "SÃ©grÃ©gationne", "Sirote", "Standardise", "Sacrifie", "Suce",
+  "Tabasse", "Temporalise", "TotÃ©mise", "TronÃ§onne", "Tuberculise", "Transpose", "Tuyaute", "Turlupine", "Tyrannise", "Tamponne", "Tambourine", "Taillade", "Traumatise",
+  "UlcÃ¨re", "Universalise", "Usurpe", "Urbanise", "Uniformise", "Urine",
+  "VocifÃ¨re", "Vouvoie",  "Vampirise", "Valdingue", "Vulgarise"
+];
+
+var nouns = [
+  "tes morts", "tes grands morts", "tes ancÃªtres", "tes grands ancÃªtres", "ton oncle", "ton grand-oncle", "ta tante", "ta grande-tante", "tes descendants", "ta gÃ©nÃ©alogie"
+];
+
+var length_v = verbs.length;
+var length_n = nouns.length;
+
+Bot.on("message", (message) => {
+      if (message.content.startsWith("Amort")) {
+          var nb_v = Math.floor(Math.random() * length_v);
+          var nb_n = Math.floor(Math.random() * length_n);
+          message.channel.send(nb_v + nb_n);
+      }
+});
+
 var choix = [
     "Face !",
     "Pile !",
