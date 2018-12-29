@@ -265,7 +265,7 @@ var verbs = [
   "Allume", "Avale", "Amalgame", "Atomise", "Assaisonne",
   "Badigeonne", "Baise", "Bourre", "Baptise", "Bouillonne", "Barbouille", "Bascule", "Balaye", "Bastonne",
   "Climatise", "Catapulte", "Culbute", "Cuisine", "Crucifie",
-  "DÃ©calotte", "DÃ©fouraille", "DÃ©foreste", "DÃ©racine", "DÃ©terre", "DÃ©marre",
+  "Décalotte", "Défouraille", "Déforeste", "Déracine", "Déterre", "Démarre",
   "Emince", "Eviscere", "Engraisse", "Enterre", "Epluche",
   "Fiscalise", "Fossilise", "Fourre", "Falsifie",
   "Gargarise", "Grignote", "Goupille",
@@ -273,21 +273,21 @@ var verbs = [
   "Inhale", "Informatise", "Irrite", "Immortalise", "Irradie", "Immunise",
   "Javellise", "Jalonne", "Jardine",
   "Kidnappe", "Klaxonne",
-  "Lessive", "Lobotomise", "Lardonne", "LinÃ©arise", "Localise", "LiquÃ©fie", "LÃ©galise",
-  "Momifie", "MÃ©tÃ©orise", "Massacre", "Mazoute", "Multiplie", "Mensualise", "MinÃ©ralise", "MagnÃ©tise", "Mange", "Matraque",
-  "NÃ©bulise", "NumÃ©rise", "Napalmise", "Nettoie", "NuclÃ©arise", "Nitrifie",
-  "Occidentalise", "Opprime", "OxygÃ¨ne", "Octuple", "Obnubile",
-  "Pianotte", "Parfume", "PondÃ¨re", "ProphÃ©tise", "Pronostique", "Postiche", "Pasteurise", "Perfore", "Pourchasse", "PulvÃ©rise", "Procrastine",
+  "Lessive", "Lobotomise", "Lardonne", "Linéarise", "Localise", "Liquéfie", "Légalise",
+  "Momifie", "Météorise", "Massacre", "Mazoute", "Multiplie", "Mensualise", "Minéralise", "Magnétise", "Mange", "Matraque",
+  "Nébulise", "Numérise", "Napalmise", "Nettoie", "Nucléarise", "Nitrifie",
+  "Occidentalise", "Opprime", "Oxygène", "Octuple", "Obnubile",
+  "Pianotte", "Parfume", "Pondère", "Prophétise", "Programme", "Pronostique", "Postiche", "Pasteurise", "Perfore", "Pourchasse", "Pulvérise", "Procrastine",
   "Quadrille", "Quadruple", "Querelle", "Quantifie", "Quintuple",
-  "RecÃ¨le", "Racommode", "RÃ©volutionne", "Rumine", "Ruisselle", "RÃ©quisitionne", "Rafale",
-  "Saupoudre", "Surcharge", "Surchauffe", "SurcÃ´te", "Scannerise", "Surligne", "SÃ©grÃ©gationne", "Sirote", "Standardise", "Sacrifie", "Suce",
-  "Tabasse", "Temporalise", "TotÃ©mise", "TronÃ§onne", "Tuberculise", "Transpose", "Tuyaute", "Turlupine", "Tyrannise", "Tamponne", "Tambourine", "Taillade", "Traumatise",
-  "UlcÃ¨re", "Universalise", "Usurpe", "Urbanise", "Uniformise", "Urine",
-  "VocifÃ¨re", "Vouvoie",  "Vampirise", "Valdingue", "Vulgarise"
+  "Recèle", "Racommode", "Révolutionne", "Rumine", "Ruisselle", "Réquisitionne", "Rafale",
+  "Saupoudre", "Surcharge", "Surchauffe", "SurcÃ´te", "Scannerise", "Surligne", "Ségrégationne", "Sirote", "Standardise", "Sacrifie", "Suce",
+  "Tabasse", "Temporalise", "Totémise", "Tronçonne", "Tuberculise", "Transpose", "Tuyaute", "Turlupine", "Tyrannise", "Tamponne", "Tambourine", "Taillade", "Traumatise",
+  "Ulcère", "Universalise", "Usurpe", "Urbanise", "Uniformise", "Urine",
+  "Vocifère", "Vouvoie",  "Vampirise", "Valdingue", "Vulgarise"
 ];
 
 var nouns = [
-  " tes morts", " tes grands morts", " tes ancÃªtres", " tes grands ancÃªtres", " ton oncle", " ton grand-oncle", " ta tante", " ta grande-tante", " tes descendants", " ta gÃ©nÃ©alogie"
+  " tes morts", " tes grands morts", " tes ancètres", " tes grands ancètres", " ton oncle", " ton grand-oncle", " ta tante", " ta grande-tante", " tes descendants", " ta généalogie"
 ];
 
 Bot.on("message", (message) => {
