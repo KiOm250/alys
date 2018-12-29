@@ -294,7 +294,7 @@ Bot.on("message", (message) => {
       if (message.content.startsWith("Amort")) {
           var nb_v = verbs[Math.floor(Math.random() * verbs.length)];
           var nb_n = nouns[Math.floor(Math.random() * nouns.length)];
-          message.channel.send(nb_v + nb_n);
+          message.channel.send(nb_v + " " + nb_n);
       }
 });
 
