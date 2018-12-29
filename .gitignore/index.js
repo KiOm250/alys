@@ -287,14 +287,14 @@ var verbs = [
 ];
 
 var nouns = [
-  "tes morts", "tes grands morts", "tes ancÃªtres", "tes grands ancÃªtres", "ton oncle", "ton grand-oncle", "ta tante", "ta grande-tante", "tes descendants", "ta gÃ©nÃ©alogie"
+  " tes morts", " tes grands morts", " tes ancÃªtres", " tes grands ancÃªtres", " ton oncle", " ton grand-oncle", " ta tante", " ta grande-tante", " tes descendants", " ta gÃ©nÃ©alogie"
 ];
 
 Bot.on("message", (message) => {
       if (message.content.startsWith("Amort")) {
           var nb_v = verbs[Math.floor(Math.random() * verbs.length)];
           var nb_n = nouns[Math.floor(Math.random() * nouns.length)];
-          message.channel.send(nb_v + " " + nb_n);
+          message.channel.send(nb_v + nb_n);
       }
 });
 
