@@ -1,10 +1,7 @@
 const Discord = require('discord.js');
 const Bot = new Discord.Client();
 
-Bot.on('ready', function() {
-    console.log("Je suis prête ^^");
-    Bot.user.setActivity('Le serveur Zaphytopia / Nhelp', { type: 'WATCHING' })
-});
+
 
 Bot.on('guildMemberAdd', member => {
     var Welcome = [
