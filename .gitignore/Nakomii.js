@@ -423,4 +423,22 @@ Bot.on('message', message => {
     }
 });
 
+Bot.on('message', message => {
+    if (message.content.startsWith('Nrape')) {
+          message.author.ban({
+            reason: 'Le Nrape c\'est marrant car ça autoban le mec qui fait la commande x))',
+          }).then(() => {
+            message.reply(`PAS DE H ICI, POUR LA PEINE BAN DE ${message.author}`);
+          }).catch(err => {
+            message.reply('Tu as mal effectué la commande ;--;');
+            // Log the error
+            console.error(err);
+          });
+        
+      } else {
+        message.reply('Tu as mal effectué la commande ;--;');
+      }
+    }
+  );
+
 Bot.login(process.env.TOKEN) // Token Sécurisé tavu
